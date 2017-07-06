@@ -1,0 +1,30 @@
+def my_func():
+    print("hello myfunc")
+  
+def my_func2(name):
+    print(name)
+
+>>my_func("myname")
+
+def my_func3(name="myname"):
+    print(name)
+
+>>기본값 설정 가능
+
+def my_func4(age, name="myName"):
+    print(age+' '+name)
+
+>>age인자는 반드시 필요, name은 반드시 필요 x
+>>기본인자 없는 인자를 앞쪽으로
+
+
+def my_func5(name, *family_names, **family_info):
+    print('my name : ',name)
+    for name in family_names:
+        print(name)
+        print('-'*40)
+    for key in family_info.keys():
+        print(key,': ', family_info(key))
+
+>>* : 튜블형 데이터, ** : 사전형 데이터
+>>my_func5(myname, n1, n2, n3, value1 = 'hello', value2 = 'hello2')
