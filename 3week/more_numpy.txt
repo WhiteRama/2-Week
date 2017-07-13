@@ -1,0 +1,16 @@
+np.exp(x)
+>>> e^x
+
+x = np.array([-1, 1, 2])
+y = x > 0
+y.astype(np.int)
+>>>array([0, 1, 1])
+
+np.maximum(0, x)
+>>>0, x중 큰 값 반환
+
+np.ndim(x)
+>>>리스트 x의 차원
+
+np.dot(x, y)
+>>>x와 y의 내적
