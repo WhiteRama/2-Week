@@ -204,6 +204,11 @@ def word_classifier(food_l):
                 word_number[word_list.index(f)] += 1
     return word_list, word_number
 
+def print_word(word_list, word_number):
+    for a in range(0, len(word_list)):
+        print(word_list[a].decode('cp949') + " is " + str(word_number[a]))
+
+    print "All food number is " + str(len(word_list)) + " & " + str(len(word_number))
 
 # comment : http://pinkwink.kr/958 http://snowple.tistory.com/271 http://ruriro.tistory.com/13 
 # file_name = '/home/sshrik/vacation project/Lab Study/2/2-Week/ChoiHyunJoonProject/4 week code/test.csv'
@@ -222,8 +227,15 @@ for dir_el in dir_list:
 # print_food(food_list)
 word_list, word_number = word_classifier(food_list)
 
-for a in range(0, len(word_list)):
-    print(word_list[a].decode('cp949') + " is " + str(word_number[a]))
+print_word(word_list, word_number)
+print ("finished extracting.")
 
-print "All food number is " + str(len(word_list)) + " & " + str(len(word_number))
-print "finished extracting."
+
+def make_vector(number):
+    '''
+    make number`s number [number x number] list at most 10.
+    '''
+    random.randrange(1, 11)
+    
+
+
