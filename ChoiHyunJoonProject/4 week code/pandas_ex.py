@@ -101,6 +101,26 @@ def extract_food_list(file_name):
         if len(food_merged[a]) < 1:
             del food_merged[a]
         else:
+            b = 0
+            # \xec\x8c\x80\xeb\xb0\xa5 : 쌀밥
+            while b < len(food_merged[a]):
+                if food_merged[a][b].startswith('\xec\x8c\x80\xeb\xb0\xa5'):
+                    if not food_merged[a][b].endswith('\xec\x8c\x80\xeb\xb0\xa5'):
+                        f_temp = food_merged[a][b]
+                        del food_merged[a][b]
+                        food_merged[a].append('\xec\x8c\x80\xeb\xb0\xa5')
+                        food_merged[a].append(f_temp.split('\xec\x8c\x80\xeb\xb0\xa5')[-1])
+                    else:
+                        b += 1
+                else:
+                    b += 1
+            a += 1
+
+    a = 0
+    while a < len(food_merged):
+        if len(food_merged[a]) < 1:
+            del food_merged[a]
+        else:
             a += 1
 
     return food_merged
@@ -199,12 +219,11 @@ for dir_el in dir_list:
         food_candidate = extract_food_list(f)
     food_list += food_candidate
 
-print_food(food_list)
+# print_food(food_list)
 word_list, word_number = word_classifier(food_list)
 
-'''
 for a in range(0, len(word_list)):
     print(word_list[a].decode('cp949') + " is " + str(word_number[a]))
-'''
 
+print "All food number is " + str(len(word_list)) + " & " + str(len(word_number))
 print "finished extracting."
